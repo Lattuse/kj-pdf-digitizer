@@ -11,6 +11,7 @@ from fastapi.responses import StreamingResponse
 from io import BytesIO
 import os
 import sys
+import uvicorn
 sys.stdout.reconfigure(encoding="utf-8")
 
 
@@ -210,4 +211,6 @@ async def process_pdf(file: UploadFile = File(...)):
 
     finally:
         os.remove(pdf_path)
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0")
 
